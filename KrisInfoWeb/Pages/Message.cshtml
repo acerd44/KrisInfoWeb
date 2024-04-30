@@ -1,0 +1,27 @@
+﻿@page
+@model KrisInfoWeb.Pages.MessageModel
+@{
+}
+
+<div class="container w-50 text-center">
+    <div class="card">
+        <div class="card-header">
+            <h2>@Model.Information.Headline</h2>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">ID: @Model.Information.Identifier</div>
+            @if (Model.Information.Area.Count > 0)
+            {
+                <div class="col-md-3">@Model.Information.Area[0].Description</div>
+            }
+        </div>
+        <div class="card-body">
+            @Model.Information.PushMessage
+            <br />
+            <a href="https://www.trafikverket.se/">Trafikverket</a>
+            <br />
+            <a asp-page="Index" class="btn btn-secondary w-100">Back</a>
+        </div>
+    </div>
+</div>

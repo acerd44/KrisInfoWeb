@@ -1,0 +1,39 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<div class="text-center">
+    <h1 class="display-4">Välkommen</h1>
+    <h2>Samtliga Meddelanden</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rubrik</th>
+                <th>Published</th>
+                <th>Country</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var info in Model.Information)
+            {
+                <tr>
+                    <td>@info.Identifier</td>
+                    <td>@info.Headline</td>
+                    <td>@info.Published</td>
+                    @if (@info.Area.Count > 0)
+                    {
+                        <td>@info.Area[0].Description</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                    <td><a asp-page="Message" asp-route-id="@info.Identifier" class="btn btn-primary">Läs mer</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
